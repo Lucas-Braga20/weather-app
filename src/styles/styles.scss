@@ -1,0 +1,385 @@
+$blue-color: #2C86DC;
+$blue-gradient-light-color: #2B87DC;
+$blue-gradient-dark-color: #2F56BA;
+$gray-color: #858585;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+input {
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+
+    &::placeholder {
+        color: white;
+    }
+}
+
+@font-face {
+    font-family: 'barlow-regular';
+    src: url('../font/BarlowCondensed-Regular.ttf');
+}
+@font-face {
+    font-family: 'barlow-semibold';
+    src: url('../font/BarlowCondensed-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'barlow-extralight';
+    src: url('../font/BarlowCondensed-ExtraLight.ttf');
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+
+    background: rgb(43,135,220);
+    background: linear-gradient(180deg, rgba(43,135,220,1) 0%, rgba(47,86,186,1) 100%);
+}
+body {
+    font-size: 16px;
+}
+
+.chart-text {
+    font-family: 'barlow-extralight';
+    font-weight: normal !important;
+    font-size: 1.4em;
+    color: $gray-color;
+}
+.chart-icon {
+    float: left;
+    margin-right: 5px;
+}
+
+.container-weather-app {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 650px;
+
+    .container-search {
+        width: 100%;
+        color: white;
+        margin: 10px 0;
+        
+        .container-input-city {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 40px;
+            
+            .label-city {
+                display: flex;
+                justify-content: center;
+                flex-grow: 1;
+                cursor: pointer;
+
+                i {
+                    font-size: 1.4em;
+                }
+            }
+            .input-city {
+                flex-grow: 15;
+                font-family: 'barlow-regular';
+                font-size: 1.125em;
+            }
+        }
+
+        .bottom-bar {
+            width: 650px;
+            height: 2px;
+            background-color: white;
+        }
+    }
+    .container-current-conditions {
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        margin: 10px 0;
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid $blue-color;
+            padding: 5px 0;
+
+            .container-title {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                i {
+                    font-size: 1.6em;
+                    margin-right: 15px;
+                    color: $blue-color;
+                }
+                h2 {
+                    font-family: 'barlow-semibold';
+                    color: $blue-color;
+                }
+            }
+            span {
+                font-family: 'barlow-extralight';
+                font-size: 1em;
+                color: $gray-color;
+            }
+        }
+
+        .body {
+            display: grid;
+            grid-template-areas: 
+                "current wind humidity"
+                "current uv uv";
+            padding: 10px 0;
+
+            .current-condition {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                grid-area: current;
+
+                .info {
+                    position: relative;
+                    padding-bottom: 15px;
+                    padding-left: 10px;
+                    
+                    .temp {
+                        font-family: 'barlow-semibold';
+                        font-size: 4em;
+                        color: $blue-color;
+                    }
+                    .text {
+                        width: 100%;
+                        text-align: center;
+                        position: absolute;
+                        top: 65px;
+                        left: 55%;
+                        transform: translate(-50%);
+                        font-family: 'barlow-extralight';
+                        font-size: 1.125em;
+                        color: $gray-color;
+                    }
+                }
+            }
+
+            .container-title {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                i {
+                    font-size: 1.3em;
+                    color: $blue-color;
+                    margin-right: 15px;
+                }
+                h3 {
+                    font-family: 'barlow-semibold';
+                    font-size: 1.5em;
+                    color: $blue-color;
+                }
+            }
+
+            .wind, .humidity, .uv-index {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .wind {
+                grid-area: wind;
+                
+                .wind-body {
+                    .result {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        span {
+                            font-size: 1.5em;
+                            font-family: 'barlow-extralight';
+                            color: $gray-color;
+                        }
+                    }
+                }
+            }
+
+            .humidity {
+                grid-area: humidity;
+
+                .humidity-body {
+                    .result {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        span {
+                            font-family: 'barlow-extralight';
+                            font-size: 1.5em;
+                            color: $gray-color;
+                        }
+                    }
+                }
+            }
+
+            .uv-index {
+                grid-area: uv;
+
+                .uv-index-body {
+                    .result {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        span {
+                            font-family: 'barlow-extralight';
+                            font-size: 1.5em;
+                            color: $gray-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .container-hourly-conditions {
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        margin: 10px 0;
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid $blue-color;
+            padding: 5px 0;
+
+            .container-title {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                i {
+                    font-size: 1.6em;
+                    margin-right: 15px;
+                    color: $blue-color;
+                }
+                h2 {
+                    font-family: 'barlow-semibold';
+                    color: $blue-color;
+                }
+            }
+        }
+    }
+    .container-daily-conditions {
+        margin: 10px 0;
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 0;
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+
+            .container-title {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                i {
+                    font-size: 1.6em;
+                    margin-right: 15px;
+                    color: $blue-color;
+                }
+                h2 {
+                    font-family: 'barlow-semibold';
+                    color: $blue-color;
+                }
+            }
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .daily {
+            width: 122px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 5px;
+
+            .header {
+                .date {
+                    font-family: 'barlow-extralight';
+                    font-size: 1em;
+                    color: $gray-color;
+                    text-align: center
+                }
+                .temp {
+                    font-family: 'barlow-semibold';
+                    font-size: 1em;
+                    color: $blue-color;
+                    text-align: center;
+                }
+            }
+            .body {
+                padding: 0 5px;
+
+                .condition {
+                    margin: 5px 0;
+
+                    .info {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+
+                        .mark {
+                            display: block;
+                            width: 70%;
+                            font-family: 'barlow-semibold';
+                            font-size: 0.9em;
+                            color: $blue-color;
+                        }
+                        .icon {
+                            width: 30%;
+                        }
+                    }
+                    
+                    .content {
+                        display: block;
+                        width: 100%;
+                        font-family: 'barlow-extralight';
+                        font-size: 0.8em;
+                        color: $gray-color;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow:    ellipsis;
+                    }
+                }
+            }
+        }
+    }
+}
